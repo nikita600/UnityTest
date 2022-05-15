@@ -1,22 +1,35 @@
 using Game.InputSystem;
+using Units.Health;
 using UnityEngine;
 
 namespace Game
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour, IHealthContainer
     {
+        [SerializeField]
+        private HealthSettings _baseHealthSettings = null;
+        
+        private Health _health = new Health();
         private IInputListener _inputListener = null;
 
-        private void Awake()
+        public Health Health => _health;
+
+        private void OnEnable()
         {
+            _baseHealthSettings.ApplyTo(_health);
+            
+            _health.Dead += OnDead;
+            
             _inputListener = Services.Get<IInputListener>();
             _inputListener.Fire += OnFire;
             _inputListener.Look += OnLook;
             _inputListener.Move += OnMove;
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
+            _health.Dead -= OnDead;
+            
             _inputListener.Fire -= OnFire;
             _inputListener.Look -= OnLook;
             _inputListener.Move -= OnMove;
@@ -36,6 +49,11 @@ namespace Game
         private void OnFire()
         {
             Debug.LogError("Fire");
+        }
+        
+        private void OnDead()
+        {
+            gameObject.SetActive(false);
         }
     }
 }
