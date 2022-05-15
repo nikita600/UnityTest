@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6480258029299420788}
   - component: {fileID: 6480258029299420789}
   - component: {fileID: 7033042185211341109}
+  - component: {fileID: 8082369084265332860}
+  - component: {fileID: 5055920734011548247}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -78,6 +80,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseHealthSettings: {fileID: 11400000, guid: 0933ad1889bfba043b421c4e9df20b11, type: 2}
+  _cameraController: {fileID: 5055920734011548247}
+  _movementController: {fileID: 8082369084265332860}
+--- !u!114 &8082369084265332860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6480258029299420779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b98763ce6e4fd2b00f192fbd8897b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 6480258029299420789}
+  _movementSpeed: 180
+--- !u!114 &5055920734011548247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6480258029299420779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af2cbe780e7488a9dfb825b7de56e29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 6480258030062761718}
+  _rotationSpeed: 100
 --- !u!1 &6480258030062761716
 GameObject:
   m_ObjectHideFlags: 0

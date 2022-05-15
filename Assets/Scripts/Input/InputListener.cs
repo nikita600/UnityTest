@@ -9,7 +9,7 @@ namespace Game.InputSystem
     {
         public event Action Fire;
         public event Action<Vector2> Move;
-        public event Action<Vector3> Look;
+        public event Action<Vector2> Look;
 
         private readonly List<InputCommand> _inputCommands = new List<InputCommand>();
 
@@ -40,7 +40,7 @@ namespace Game.InputSystem
             Move?.Invoke(direction);
         }
 
-        internal void ExecuteLook(Vector3 direction)
+        internal void ExecuteLook(Vector2 direction)
         {
             Look?.Invoke(direction);
         }

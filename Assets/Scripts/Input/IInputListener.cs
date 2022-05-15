@@ -7,6 +7,6 @@ namespace Game.InputSystem
     {
         event Action Fire;
         event Action<Vector2> Move;
-        event Action<Vector3> Look;
+        event Action<Vector2> Look;
     }
 }
