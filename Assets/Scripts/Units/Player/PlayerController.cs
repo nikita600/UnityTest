@@ -38,17 +38,17 @@ namespace Game
 
         private void OnMove(Vector2 moveDirection)
         {
-            Debug.LogError("Move: " + moveDirection.ToString("F4"));
+            Debug.Log("Move: " + moveDirection.ToString("F4"));
         }
 
         private void OnLook(Vector3 lookDirection)
         {
-            Debug.LogError("Look: " + lookDirection.ToString("F4"));
+            Debug.Log("Look: " + lookDirection.ToString("F4"));
         }
 
         private void OnFire()
         {
-            Debug.LogError("Fire");
+            Debug.Log("Fire");
         }
         
         private void OnDead()

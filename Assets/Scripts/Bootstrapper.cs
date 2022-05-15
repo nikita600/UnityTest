@@ -1,7 +1,7 @@
-using System.Collections.Generic;
+using System;
+using Game.GameStates;
 using Game.InputSystem;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Game
 {
@@ -10,8 +10,7 @@ namespace Game
         [SerializeField]
         private InputListener _inputListener = null;
 
-        [SerializeField]
-        private string _gameplaySceneName = "Gameplay";
+        private StateMachine.StateMachine _stateMachine;
         
         private void Awake()
         {
@@ -20,17 +19,18 @@ namespace Game
             Services.Setup();
             Services.Register<IInputListener>(_inputListener);
 
-            LoadGameplayScene();
+            _stateMachine = new StateMachine.StateMachine();
+            _stateMachine.Setup(new StartGameState());
         }
 
         private void OnDestroy()
         {
             Services.Release();
         }
-        
-        private void LoadGameplayScene()
+
+        private void LateUpdate()
         {
-            SceneManager.LoadScene(_gameplaySceneName, LoadSceneMode.Additive);
+            _stateMachine?.Update();
         }
     }
 }
