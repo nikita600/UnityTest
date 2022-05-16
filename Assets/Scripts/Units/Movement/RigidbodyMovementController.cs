@@ -1,17 +1,29 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Game.Units.Movement
 {
     public sealed class RigidbodyMovementController : MovementController
     {
         [SerializeField]
-        private Rigidbody _rigidbody = null;
+        private Transform _pivot = null;
 
+        [SerializeField]
+        private Rigidbody _rigidbody = null;
+        
         [SerializeField]
         private float _movementSpeed = 100f;
 
         private bool _updateMovement = false;
         private Vector3 _movementDirection = new Vector3();
+
+        private void Awake()
+        {
+            if (_pivot == null)
+            {
+                _pivot = transform;
+            }
+        }
 
         private void FixedUpdate()
         {
@@ -19,9 +31,12 @@ namespace Game.Units.Movement
             {
                 return;
             }
+            
+            var direction = _pivot.TransformDirection(_movementDirection);
+            var velocity = direction * _movementSpeed * Time.fixedDeltaTime;
+            velocity.y = 0f;
 
-            var direction = transform.TransformDirection(_movementDirection);
-            _rigidbody.velocity = direction * _movementSpeed * Time.fixedDeltaTime;
+            _rigidbody.velocity = velocity;
             _updateMovement = false;
         }
 

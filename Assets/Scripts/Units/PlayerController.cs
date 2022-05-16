@@ -21,22 +21,21 @@ namespace Game
         private string _deathColliderTag = "DeathCollider";
 
         private bool _isFalling = false;
-        private Health _health = new Health();
         private IInputListener _inputListener = null;
-
-        public Health Health => _health;
+        
+        public Health Health { get; } = new Health();
 
         private void OnEnable()
         {
-            _baseHealthSettings.ApplyTo(_health);
-            _health.Dead += OnDead;
+            _baseHealthSettings.ApplyTo(Health);
+            Health.Dead += OnDead;
             
             StartListenInput();
         }
 
         private void OnDisable()
         {
-            _health.Dead -= OnDead;
+            Health.Dead -= OnDead;
             
             StopListenInput();
         }
@@ -72,24 +71,20 @@ namespace Game
 
         private void OnMove(Vector2 moveDirection)
         {
-            if (_isFalling)
+            if (!_isFalling)
             {
-                return;
+                _movementController.Move(new Vector3(moveDirection.x, 0f, moveDirection.y));
             }
-            
-            _movementController.Move(new Vector3(moveDirection.x, 0f, moveDirection.y));
-            Debug.Log("Move: " + moveDirection.ToString("F4"));
         }
         
         private void OnLook(Vector2 lookDirection)
         {
-            _cameraController.Rotate(new Vector3(lookDirection.x, 0f, lookDirection.y));
-            Debug.Log("Look: " + lookDirection.ToString("F4"));
+            _cameraController.Rotate(lookDirection);
         }
 
         private void OnFire()
         {
-            Debug.Log("Fire");
+            //Debug.Log("Fire");
         }
         
         private void OnDead()

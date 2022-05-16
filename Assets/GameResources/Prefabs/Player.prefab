@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6480258029299420778}
-  - component: {fileID: 6480258029299420788}
-  - component: {fileID: 6480258029299420789}
+  - component: {fileID: 225007466203606567}
+  - component: {fileID: 2882363743644236278}
   - component: {fileID: 7033042185211341109}
   - component: {fileID: 8082369084265332860}
   - component: {fileID: 5055920734011548247}
@@ -37,7 +37,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &6480258029299420788
+--- !u!136 &225007466203606567
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -51,7 +51,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &6480258029299420789
+--- !u!54 &2882363743644236278
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -82,6 +82,7 @@ MonoBehaviour:
   _baseHealthSettings: {fileID: 11400000, guid: 0933ad1889bfba043b421c4e9df20b11, type: 2}
   _cameraController: {fileID: 5055920734011548247}
   _movementController: {fileID: 8082369084265332860}
+  _deathColliderTag: DeathCollider
 --- !u!114 &8082369084265332860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,7 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b98763ce6e4fd2b00f192fbd8897b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 6480258029299420789}
+  _pivot: {fileID: 6480258030062761713}
+  _rigidbody: {fileID: 2882363743644236278}
   _movementSpeed: 180
 --- !u!114 &5055920734011548247
 MonoBehaviour:
@@ -108,8 +110,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af2cbe780e7488a9dfb825b7de56e29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 6480258030062761718}
-  _rotationSpeed: 100
+  _cameraTransform: {fileID: 6480258030062761713}
+  _invertVerticalAxis: 0
+  _invertHorizontalAxis: 0
+  _sensitivity: 3
+  _yMinRotationAngle: -90
+  _yMaxRotationAngle: 90
 --- !u!1 &6480258030062761716
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,8 +141,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6480258030062761716}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
