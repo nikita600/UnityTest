@@ -12,13 +12,16 @@ namespace Game
         private HealthSettings _baseHealthSettings = null;
 
         [SerializeField]
+        private ColliderTagSettings _colliderTagSettings = null;
+        
+        [SerializeField]
         private CameraController _cameraController = null;
 
         [SerializeField]
         private MovementController _movementController = null;
 
         [SerializeField]
-        private string _deathColliderTag = "DeathCollider";
+        private WeaponController _weaponController = null;
 
         private bool _isFalling = false;
         private IInputListener _inputListener = null;
