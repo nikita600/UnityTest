@@ -5,25 +5,27 @@ using UnityEngine;
 
 namespace Game.InputSystem
 {
-    public sealed class InputListener : MonoBehaviour, IInputListener
+    public sealed class InputListener : IInputListener
     {
         public event Action Fire;
         public event Action<Vector2> Move;
         public event Action<Vector2> Look;
 
-        private readonly List<InputCommand> _inputCommands = new List<InputCommand>();
+        private readonly InputCommand[] _inputCommands;
 
-        private void Awake()
+        public InputListener()
         {
-            _inputCommands.Clear();
-            _inputCommands.Add(new FireInputCommand(this));
-            _inputCommands.Add(new MoveInputCommand(this));
-            _inputCommands.Add(new LookInputCommand(this));
+            _inputCommands = new InputCommand[]
+            {
+                new FireInputCommand(this),
+                new MoveInputCommand(this),
+                new LookInputCommand(this)
+            };
         }
 
-        private void LateUpdate()
+        public void Update()
         {
-            for (int i = 0, size = _inputCommands.Count; i < size; i++)
+            for (int i = 0, size = _inputCommands.Length; i < size; i++)
             {
                 var inputCommand = _inputCommands[i];
                 inputCommand.Execute();

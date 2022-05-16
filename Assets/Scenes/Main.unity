@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1670444140}
   - component: {fileID: 1670444142}
-  - component: {fileID: 1670444143}
   m_Layer: 0
   m_Name: Bootstrapper
   m_TagString: Untagged
@@ -166,19 +165,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6a4793119cc02345868bfb2a10df567, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inputListener: {fileID: 1670444143}
-  _gameplaySceneName: Gameplay
---- !u!114 &1670444143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1670444139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5253fa2c896cd2419002c2b0326a02d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
