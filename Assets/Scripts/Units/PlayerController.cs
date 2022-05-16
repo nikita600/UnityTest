@@ -2,7 +2,9 @@ using System;
 using Game.InputSystem;
 using Game.Units.Movement;
 using Units.Health;
+using Units.Weapon;
 using UnityEngine;
+using Utilities;
 
 namespace Game
 {
@@ -33,20 +35,26 @@ namespace Game
             _baseHealthSettings.ApplyTo(Health);
             Health.Dead += OnDead;
             
-            StartListenInput();
+            _inputListener = Services.Get<IInputListener>();
+            _inputListener.Fire += OnFire;
+            _inputListener.Look += OnLook;
+            _inputListener.Move += OnMove;
         }
 
         private void OnDisable()
         {
             Health.Dead -= OnDead;
             
-            StopListenInput();
+            _inputListener.Fire -= OnFire;
+            _inputListener.Look -= OnLook;
+            _inputListener.Move -= OnMove;
+            _inputListener = null;
         }
 
         private void FixedUpdate()
         {
-            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hitInfo) 
-                && hitInfo.collider.gameObject.tag.Equals(_deathColliderTag, StringComparison.Ordinal))
+            if (Physics.Raycast(transform.position, Vector3.down, out var hitInfo) 
+                && hitInfo.collider.gameObject.tag.Equals(_colliderTagSettings.DeathColliderTag, StringComparison.Ordinal))
             {
                 _isFalling = true;
             }
@@ -54,22 +62,6 @@ namespace Game
             {
                 _isFalling = false;
             }
-        }
-
-        private void StartListenInput()
-        {
-            _inputListener = Services.Get<IInputListener>();
-            _inputListener.Fire += OnFire;
-            _inputListener.Look += OnLook;
-            _inputListener.Move += OnMove;
-        }
-
-        private void StopListenInput()
-        {
-            _inputListener.Fire -= OnFire;
-            _inputListener.Look -= OnLook;
-            _inputListener.Move -= OnMove;
-            _inputListener = null;
         }
 
         private void OnMove(Vector2 moveDirection)
@@ -87,12 +79,12 @@ namespace Game
 
         private void OnFire()
         {
-            //Debug.Log("Fire");
+            _weaponController.Fire();
         }
         
         private void OnDead()
         {
-            gameObject.SetActive(false);
+            enabled = false;
         }
     }
 }
