@@ -1062,6 +1062,10 @@ PrefabInstance:
       propertyPath: _movementSpeed
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 1376207942461352782, guid: 3527536165a859b439692690b47ffc81, type: 3}
+      propertyPath: _baseHealthSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 1a1278d831d054b4aac3670e7d0204e3, type: 2}
     - target: {fileID: 1843693660045760666, guid: 3527536165a859b439692690b47ffc81, type: 3}
       propertyPath: _waypoints.Array.size
       value: 2
@@ -1904,6 +1908,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1388734090}
     m_Modifications:
+    - target: {fileID: 1376207942461352782, guid: 3527536165a859b439692690b47ffc81, type: 3}
+      propertyPath: _baseHealthSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 04599e78c9c37694b81d8b882b272ca4, type: 2}
     - target: {fileID: 1893005915225646152, guid: 3527536165a859b439692690b47ffc81, type: 3}
       propertyPath: m_Name
       value: Enemy (3)
@@ -2833,6 +2841,10 @@ PrefabInstance:
       propertyPath: _movementSpeed
       value: 160
       objectReference: {fileID: 0}
+    - target: {fileID: 1376207942461352782, guid: 3527536165a859b439692690b47ffc81, type: 3}
+      propertyPath: _baseHealthSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 04599e78c9c37694b81d8b882b272ca4, type: 2}
     - target: {fileID: 1843693660045760666, guid: 3527536165a859b439692690b47ffc81, type: 3}
       propertyPath: _waypoints.Array.size
       value: 2
