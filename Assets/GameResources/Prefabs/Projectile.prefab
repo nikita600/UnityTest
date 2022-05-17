@@ -129,3 +129,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 20
   _rigidbody: {fileID: 6542339003663614746}
+  _doneEffect: {fileID: 2888064898537233893, guid: b039f198778ed3d47af126e596eeef6b, type: 3}

@@ -1,4 +1,5 @@
 ﻿using System;
+using Game.Effects;
 using UnityEngine;
 
 namespace Units.Weapon.Projectile
@@ -8,6 +9,9 @@ namespace Units.Weapon.Projectile
         [SerializeField]
         private Rigidbody _rigidbody = null;
 
+        [SerializeField]
+        private EffectController _doneEffect = null;
+        
         private Action _onDone = null;
         
         public override void Fire(Vector3 force, Action onDone)
@@ -19,6 +23,19 @@ namespace Units.Weapon.Projectile
         private void OnCollisionEnter(Collision other)
         {
             _onDone?.Invoke();
+
+            ShowDoneEffect(other);
+        }
+
+        private void ShowDoneEffect(Collision other)
+        {
+            if (_doneEffect == null)
+            {
+                return;
+            }
+            
+            var effectInstance = Instantiate(_doneEffect, other.transform.position, Quaternion.identity);
+            effectInstance.Show();
         }
     }
 }
