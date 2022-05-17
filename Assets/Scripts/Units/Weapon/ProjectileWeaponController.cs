@@ -1,10 +1,14 @@
-﻿using Units.Weapon.Projectile;
+﻿using Game;
+using Units.Weapon.Projectile;
 using UnityEngine;
 
 namespace Units.Weapon
 {
     public sealed class ProjectileWeaponController : WeaponController
     {
+        [SerializeField]
+        private CameraController _cameraController = null;
+        
         [SerializeField]
         private Transform _muzzleTransform = null;
         
@@ -32,10 +36,23 @@ namespace Units.Weapon
             {
                 return;
             }
-            
+
+            Vector3 forceDirection;
+            var muzzlePosition = _muzzleTransform.position;
+            if (_cameraController != null)
+            {
+                var viewCenterWorldPosition = _cameraController.ViewCenterWorldPosition;
+                forceDirection = viewCenterWorldPosition - muzzlePosition;
+                forceDirection /= forceDirection.magnitude;
+            }
+            else
+            {
+                forceDirection = _muzzleTransform.forward;
+            }
+
             var projectileInstance = Instantiate(_projectilePrefab);
-            projectileInstance.transform.position = _muzzleTransform.position;
-            projectileInstance.Fire(_muzzleTransform.forward * _projectileSpeed, () =>
+            projectileInstance.transform.position = muzzlePosition;
+            projectileInstance.Fire(forceDirection * _projectileSpeed, () =>
             {
                 Destroy(projectileInstance.gameObject);
             });

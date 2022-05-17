@@ -128,10 +128,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2611e715dc347849352cff3b66c59c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cameraController: {fileID: 5055920734011548247}
   _muzzleTransform: {fileID: 8348477208267550946}
   _projectilePrefab: {fileID: 6542339003663614744, guid: 74aacbf34f6e18944b6c98e7708bd127, type: 3}
-  _projectileSpeed: 40
+  _projectileSpeed: 24
   _projectilesPerSecond: 8
+  _radius: 0.75
 --- !u!1 &6480258029299420779
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,6 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af2cbe780e7488a9dfb825b7de56e29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _camera: {fileID: 6480258030062761718}
   _cameraTransform: {fileID: 6480258030062761713}
   _invertVerticalAxis: 0
   _invertHorizontalAxis: 0
@@ -307,7 +310,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 60
   field of view: 60
   orthographic: 0
   orthographic size: 5
