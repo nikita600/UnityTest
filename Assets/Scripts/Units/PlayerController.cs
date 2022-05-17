@@ -53,7 +53,7 @@ namespace Game
             var viewPosition = _cameraController.CameraPosition;
             var viewDirection = _cameraController.ViewDirection;
             var isEnemyInCrosshair = Physics.Raycast(viewPosition, viewDirection, out var viewHitInfo) 
-                                     && _colliderTagSettings.IsEnemyColliderTag(viewHitInfo.collider);
+                                     && _colliderTagSettings.IsEnemyCollider(viewHitInfo.collider);
             
             _uiManager.SetCrosshairState(isEnemyInCrosshair);
         }

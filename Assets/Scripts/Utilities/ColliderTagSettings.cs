@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace Utilities
@@ -6,6 +7,9 @@ namespace Utilities
     [CreateAssetMenu(menuName = "Level/Collider Tag Settings")]
     public class ColliderTagSettings : ScriptableObject
     {
+        [SerializeField]
+        private string _playerColliderTag = "PlayerCollider";
+        
         [SerializeField]
         private string _enemyColliderTag = "EnemyCollider";
         
@@ -15,19 +19,30 @@ namespace Utilities
         [SerializeField]
         private string _projectileColliderTag = "ProjectileCollider";
 
-        public bool IsEnemyColliderTag(Collider collider)
+        public bool IsPlayerCollider(Collider collider)
         {
-            return _enemyColliderTag.Equals(collider.gameObject.tag, StringComparison.Ordinal);
+            return IsColliderTag(_playerColliderTag, collider);
+        }
+        
+        public bool IsEnemyCollider(Collider collider)
+        {
+            return IsColliderTag(_enemyColliderTag, collider);
         }
         
         public bool IsDeathCollider(Collider collider)
         {
-            return _deathColliderTag.Equals(collider.gameObject.tag, StringComparison.Ordinal);
+            return IsColliderTag(_deathColliderTag, collider);
         }
 
         public bool IsProjectileCollider(Collider collider)
         {
-            return _projectileColliderTag.Equals(collider.gameObject.tag, StringComparison.Ordinal);
+            return IsColliderTag(_projectileColliderTag, collider);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static bool IsColliderTag(string tag, Component collider)
+        {
+            return tag.Equals(collider.gameObject.tag, StringComparison.Ordinal);
         }
     }
 }

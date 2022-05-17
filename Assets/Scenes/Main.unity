@@ -316,8 +316,8 @@ MonoBehaviour:
   _winView: {fileID: 2021358453}
   _failView: {fileID: 1412342080}
   _crosshairView: {fileID: 339783104}
-  _crosshairActive: {r: 0, g: 1, b: 0, a: 1}
-  _crosshairDisabled: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
+  _crosshairActive: {r: 1, g: 1, b: 0, a: 1}
+  _crosshairDisabled: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &1094613332
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,6 +575,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a4793119cc02345868bfb2a10df567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cursorVisible: 0
+  _cursorLockMode: 1
   _uiManager: {fileID: 891267739}
 --- !u!1 &2021358453
 GameObject:
