@@ -1,4 +1,5 @@
 ﻿using Game.StateMachine;
+using Game.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,6 +22,9 @@ namespace Game.GameStates
         public override void OnEnter()
         {
             base.OnEnter();
+
+            var uiManager = Services.Get<IUiManager>();
+            uiManager.Setup();
             
             // TODO: Extract scene name somewhere else
             var asyncOperation = SceneManager.LoadSceneAsync("Gameplay", LoadSceneMode.Additive);

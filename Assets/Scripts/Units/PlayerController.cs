@@ -1,4 +1,5 @@
 using Game.InputSystem;
+using Game.UI;
 using Game.Units.Movement;
 using Units.Weapon;
 using UnityEngine;
@@ -17,11 +18,14 @@ namespace Game
         private WeaponController _weaponController = null;
 
         private bool _isFalling = false;
+        private IUiManager _uiManager = null;
         private IInputListener _inputListener = null;
 
         protected override void OnEnable()
         {
             base.OnEnable();
+
+            _uiManager = Services.Get<IUiManager>();
             
             _inputListener = Services.Get<IInputListener>();
             _inputListener.Fire += OnFire;
@@ -37,12 +41,21 @@ namespace Game
             _inputListener.Look -= OnLook;
             _inputListener.Move -= OnMove;
             _inputListener = null;
+
+            _uiManager = null;
         }
 
         private void FixedUpdate()
         {
             _isFalling = Physics.Raycast(transform.position, Vector3.down, out var hitInfo) 
                          && _colliderTagSettings.IsDeathCollider(hitInfo.collider);
+
+            var viewPosition = _cameraController.CameraPosition;
+            var viewDirection = _cameraController.ViewDirection;
+            var isEnemyInCrosshair = Physics.Raycast(viewPosition, viewDirection, out var viewHitInfo) 
+                                     && _colliderTagSettings.IsEnemyColliderTag(viewHitInfo.collider);
+            
+            _uiManager.SetCrosshairState(isEnemyInCrosshair);
         }
 
         private void OnMove(Vector2 moveDirection)

@@ -1,5 +1,6 @@
 ﻿using System;
 using Game.StateMachine;
+using Game.UI;
 using Level;
 using Object = UnityEngine.Object;
 
@@ -33,6 +34,9 @@ namespace Game.GameStates
         {
             base.OnEnter();
 
+            var uiManager = Services.Get<IUiManager>();
+            uiManager.SetCrosshairState(false);
+            
             _finishCollider = Object.FindObjectOfType<FinishCollider>();
             if (_finishCollider == null)
             {

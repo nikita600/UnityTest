@@ -1,4 +1,5 @@
 ﻿using Game.StateMachine;
+using Game.UI;
 using UnityEngine;
 
 namespace Game.GameStates
@@ -24,6 +25,9 @@ namespace Game.GameStates
         {
             base.OnEnter();
 
+            var uiManager = Services.Get<IUiManager>();
+            uiManager.ShowFailView();
+            
             _startTime = Time.time;
         }
 

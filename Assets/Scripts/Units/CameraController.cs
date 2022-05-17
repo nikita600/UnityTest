@@ -25,6 +25,10 @@ namespace Game
         private Vector2 _rotationAngles;
         private Vector3 _horizontalAxis;
         private Vector3 _verticalAxis;
+
+        public Vector3 CameraPosition => _cameraTransform.position;
+        
+        public Vector3 ViewDirection => _cameraTransform.transform.forward;
         
         private void Awake()
         {
