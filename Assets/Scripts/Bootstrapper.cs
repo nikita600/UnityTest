@@ -8,6 +8,12 @@ namespace Game
     public class Bootstrapper : MonoBehaviour
     {
         [SerializeField]
+        private bool _cursorVisible = false;
+        
+        [SerializeField]
+        private CursorLockMode _cursorLockMode = CursorLockMode.Locked;
+        
+        [SerializeField]
         private UiManager _uiManager = null;
         
         private InputListener _inputListener;
@@ -16,6 +22,9 @@ namespace Game
         private void Awake()
         {
             DontDestroyOnLoad(gameObject);
+
+            Cursor.visible = _cursorVisible;
+            Cursor.lockState = _cursorLockMode;
             
             Services.Setup();
             
