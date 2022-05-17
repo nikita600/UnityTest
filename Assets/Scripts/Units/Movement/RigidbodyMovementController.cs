@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Game.Units.Movement
 {
@@ -17,6 +16,8 @@ namespace Game.Units.Movement
         private bool _updateMovement = false;
         private Vector3 _movementDirection = new Vector3();
 
+        public override Vector3 Velocity => _rigidbody.velocity;
+        
         private void Awake()
         {
             if (_pivot == null)

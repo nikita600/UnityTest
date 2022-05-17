@@ -1,14 +1,12 @@
-﻿using System;
-using Game.Units.Movement;
-using UnityEngine;
-
-namespace Game
+﻿namespace Game
 {
-    public class EnemyController : MonoBehaviour
+    public class EnemyController : UnitController
     {
-        [SerializeField]
-        private MovementController _movementController = null;
-
-        
+        protected override void OnDeadInternal()
+        {
+            base.OnDeadInternal();
+            
+            Destroy(gameObject);
+        }
     }
 }

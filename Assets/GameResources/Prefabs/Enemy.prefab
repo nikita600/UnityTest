@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1893005915225646157}
   - component: {fileID: 1166854601334362270}
   - component: {fileID: 1843693660045760666}
+  - component: {fileID: 1376207942461352782}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -129,6 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b98763ce6e4fd2b00f192fbd8897b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pivot: {fileID: 0}
   _rigidbody: {fileID: 1893005915225646157}
   _movementSpeed: 100
 --- !u!114 &1843693660045760666
@@ -145,3 +147,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movementController: {fileID: 1166854601334362270}
   _waypoints: []
+--- !u!114 &1376207942461352782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893005915225646152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b983fb732f44398960bba30d5081818, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colliderTagSettings: {fileID: 11400000, guid: 8707e3173e0bc2d41b20641a145947e2, type: 2}
+  _baseHealthSettings: {fileID: 11400000, guid: 72b33e2d5cfdbf8498c8c9cbaea15bbe, type: 2}

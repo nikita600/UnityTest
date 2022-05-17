@@ -94,7 +94,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 30f96e605f4c5744e92444fe000dbdba, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -211,8 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ed622b9c6b9b644ac2c503db9e6e1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseHealthSettings: {fileID: 11400000, guid: 0933ad1889bfba043b421c4e9df20b11, type: 2}
   _colliderTagSettings: {fileID: 11400000, guid: 8707e3173e0bc2d41b20641a145947e2, type: 2}
+  _baseHealthSettings: {fileID: 11400000, guid: 0933ad1889bfba043b421c4e9df20b11, type: 2}
   _cameraController: {fileID: 5055920734011548247}
   _movementController: {fileID: 8082369084265332860}
   _weaponController: {fileID: 5179467564901649532}
