@@ -8,7 +8,7 @@ namespace Game.GameStates
 {
     public sealed class GameState : State
     {
-        private State _nextState;
+        private IUnitManager _unitManager;
         private FinishCollider _finishCollider;
         private PlayerController _playerController;
         
@@ -19,10 +19,7 @@ namespace Game.GameStates
 
         public override State GetNextState()
         {
-            if (_playerController != null 
-                &&!_playerController.Health.IsDead
-                && _finishCollider != null 
-                && _finishCollider.PlayerEntered)
+            if (!IsPlayerDead() && IsPlayerOnFinish() && IsAllEnemiesDead())
             {
                 return new WinGameState();
             }
@@ -36,6 +33,8 @@ namespace Game.GameStates
 
             var uiManager = Services.Get<IUiManager>();
             uiManager.SetCrosshairState(false);
+
+            _unitManager = Services.Get<IUnitManager>();
             
             _finishCollider = Object.FindObjectOfType<FinishCollider>();
             if (_finishCollider == null)
@@ -52,8 +51,22 @@ namespace Game.GameStates
 
         private bool IsFinished()
         {
-            return _finishCollider != null && _finishCollider.PlayerEntered ||
-                   _playerController != null && _playerController.Health.IsDead;
+            return IsPlayerDead() || IsPlayerOnFinish() && IsAllEnemiesDead();
+        }
+
+        private bool IsPlayerDead()
+        {
+            return _playerController != null && _playerController.Health.IsDead;
+        }
+        
+        private bool IsPlayerOnFinish()
+        {
+            return _finishCollider != null && _finishCollider.PlayerEntered;
+        }
+
+        private bool IsAllEnemiesDead()
+        {
+            return _unitManager.GetUnitsCount<EnemyController>() == 0;
         }
     }
 }

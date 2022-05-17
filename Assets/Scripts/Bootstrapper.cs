@@ -26,12 +26,12 @@ namespace Game
             Cursor.visible = _cursorVisible;
             Cursor.lockState = _cursorLockMode;
             
-            Services.Setup();
-            
             _inputListener = new InputListener();
             
+            Services.Setup();
             Services.Register<IUiManager>(_uiManager);
             Services.Register<IInputListener>(_inputListener);
+            Services.Register<IUnitManager>(new UnitManager());
             
             _stateMachine = new StateMachine.StateMachine();
             _stateMachine.Setup(new StartGameState());

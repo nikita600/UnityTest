@@ -12,10 +12,15 @@ namespace Game
         [SerializeField]
         private HealthSettings _baseHealthSettings = null;
         
+        private IUnitManager _unitManager = null;
+        
         public Health Health { get; } = new Health();
 
         protected virtual void OnEnable()
         {
+            _unitManager = Services.Get<IUnitManager>();
+            _unitManager.Register(this);
+            
             _baseHealthSettings.ApplyTo(Health);
             
             Health.Dead += OnDead;
@@ -23,6 +28,8 @@ namespace Game
 
         protected virtual void OnDisable()
         {
+            _unitManager.Unregister(this);
+            
             Health.Dead -= OnDead;
         }
 
