@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ObstacleObject
-  m_Shader: {fileID: 10755, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: Enemy_Mask
+  m_Shader: {fileID: 4800000, guid: bf8bb8b14974d9446ad6e202b2175ebe, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -67,6 +67,7 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _OutlineWidth: 1.05
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -78,6 +79,7 @@ Material:
     - _ZTest: 8
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.14117648, g: 0.16470589, b: 0.18431373, a: 1}
+    - _Color: {r: 0.74509805, g: 0.13333334, b: 0.16078432, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 1, g: 0.5019608, b: 0, a: 0}
   m_BuildTextureStacks: []

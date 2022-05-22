@@ -8,12 +8,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Enemy
-  m_Shader: {fileID: 4800000, guid: bf8bb8b14974d9446ad6e202b2175ebe, type: 3}
+  m_Shader: {fileID: 10755, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2001
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -72,10 +72,11 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _StencilOp: 2
-    - _StencilPass: 0
+    - _StencilOp: 8
+    - _StencilPass: 2
     - _StencilRef: 1
     - _UVSec: 0
+    - _ZTest: 8
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.74509805, g: 0.13333334, b: 0.16078432, a: 1}
