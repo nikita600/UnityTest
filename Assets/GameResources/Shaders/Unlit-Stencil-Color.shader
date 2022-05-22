@@ -11,6 +11,9 @@ Shader "Unlit/Stencil/Color"
 Properties
 {
     _Color ("Main Color", Color) = (1,1,1,1)
+    _StencilRef ("Stencil Ref", Int) = 1
+    _StencilOp ("Stencil Operation", Int) = 8
+    _StencilPass ("Stencil Pass", Int) = 0
 }
 
 SubShader
@@ -20,9 +23,10 @@ SubShader
 
 	Stencil
 	{
-		Ref 1
-		Comp Always
-	}
+	    Ref [_StencilRef]
+        Comp [_StencilOp]
+        Pass [_StencilPass]
+    }
 
     Pass 
 	{

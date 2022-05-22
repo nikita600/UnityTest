@@ -69,6 +69,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9a40f63118cf0b04d800d41efeadb9a4, type: 2}
+  - {fileID: 2100000, guid: a409402088cf3fd40a107f1c756b6e68, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -226,7 +227,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _colliderTagSettings: {fileID: 11400000, guid: 8707e3173e0bc2d41b20641a145947e2, type: 2}
   _playerTarget: 1
-  _target: {fileID: 0}
 --- !u!1001 &6674106034118993938
 PrefabInstance:
   m_ObjectHideFlags: 0
